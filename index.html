@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jonesville Public Library</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="scripts.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <div class="sideBar">
+            <form action="post">
+                <div>
+                    <label for="title">Title:</label>
+                    <input id="title" type="text" required minlength="5" maxlength="50" placeholder="Great Expectations...">
+                </div>
+
+                <div>
+                    <label for="author">Author:</label>
+                    <input id="author" type="text" required minlength="5" maxlength="50" placeholder="Charles Dickens">
+                </div>
+
+                <div>
+                    <label for="pages">Page Count:</label>
+                    <input id="pages" type="range" min="1" max="999" value="483">
+                    <p class="outSlide">5000</p>
+                </div>
+
+                <div>
+                    <label for="colSelect">Book Color:</label>
+                    <input id="colSelect" type="color">
+                </div>
+
+                <button type="button" id="createBook">Add Book</button>
+            </form>
+            <div class="bookContainer">
+                <div class="bookCover test"><p></p></div>
+                <p class="title test"></p>
+                <p class="author test">Written by: </p>
+                <p class="pgCount test"></p>
+            </div>
+        </div>
+        <div class="bookHolder">
+            <!-- Books Will be added through JS here -->
+        </div>
+        <div class="header">
+            <div><h1>Jonesville Public Library</h1></div>
+            <div>
+                <a href="https://www.linkedin.com/in/thomas-j-2143782b6">Donate</a>
+                <a href="https://www.linkedin.com/in/thomas-j-2143782b6">Social Media</a>
+                <a href="https://www.linkedin.com/in/thomas-j-2143782b6" >About Us</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
