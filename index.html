@@ -18,12 +18,12 @@
 
                 <div>
                     <label for="author">Author:</label>
-                    <input id="author" type="text" required minlength="5" maxlength="50" placeholder="Charles Dickens">
+                    <input id="author" type="text" required minlength="5" maxlength="50" placeholder="Charles Dickens" >
                 </div>
 
                 <div>
                     <label for="pages">Page Count:</label>
-                    <input id="pages" type="range" min="1" max="999" value="483">
+                    <input id="pages" type="range" min="1" max="999" value="483" required>
                     <p class="outSlide">5000</p>
                 </div>
 
@@ -32,7 +32,7 @@
                     <input id="colSelect" type="color">
                 </div>
 
-                <button type="button" id="createBook">Add Book</button>
+                <button type="submit" id="createBook">Add Book</button>
             </form>
             <div class="bookContainer">
                 <div class="bookCover test"><p></p></div>

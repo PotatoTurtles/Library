@@ -9,6 +9,9 @@ let slideOut = document.querySelector(".outSlide");
 let colSelect = document.querySelector('#colSelect');
 let createBook = document.querySelector('#createBook');
 
+let form = document.querySelector('form');
+form.addEventListener('submit',(e)=>e.preventDefault())
+
 console.log(title, author, pages);
 
 let testTitle = document.querySelector('.title.test');
@@ -68,68 +71,70 @@ function addIdVal(){
 
 function addBook(bookTitle=title.value,bookAuthor=author.value,bookPages=pages.value,bookColor=colSelect.value){
     // add book to DOM
-    let id = addIdVal();
+    if(form.checkValidity()){
+        let id = addIdVal();
 
-    let bookUnit = document.createElement("div");
-    bookUnit.classList.add(`${id}`);
-    bookUnit.classList.add('bookContainer');
-    console.log(bookUnit.classList);
+        let bookUnit = document.createElement("div");
+        bookUnit.classList.add(`${id}`);
+        bookUnit.classList.add('bookContainer');
+        console.log(bookUnit.classList);
 
-    let bookCover = document.createElement("div");
-    bookCover.classList.add('bookCover');
-    bookCover.style.background=bookColor;
-    bookUnit.appendChild(bookCover);
+        let bookCover = document.createElement("div");
+        bookCover.classList.add('bookCover');
+        bookCover.style.background=bookColor;
+        bookUnit.appendChild(bookCover);
 
-    let titled = document.createElement('p');
-    titled.classList.add('title');
-    titled.textContent=bookTitle;
-    bookUnit.appendChild(titled);
+        let titled = document.createElement('p');
+        titled.classList.add('title');
+        titled.textContent=bookTitle;
+        bookUnit.appendChild(titled);
 
-    let authored = document.createElement('p');
-    authored.classList.add('author');
-    authored.textContent=`Written By: ${bookAuthor}`;
-    bookUnit.appendChild(authored);
+        let authored = document.createElement('p');
+        authored.classList.add('author');
+        authored.textContent=`Written By: ${bookAuthor}`;
+        bookUnit.appendChild(authored);
 
-    let paged = document.createElement('p');
-    paged.classList.add('pgCount');
-    paged.textContent=`Pages: ${bookPages}`;
-    bookUnit.appendChild(paged);
+        let paged = document.createElement('p');
+        paged.classList.add('pgCount');
+        paged.textContent=`Pages: ${bookPages}`;
+        bookUnit.appendChild(paged);
 
-    let outerDelete = document.createElement('div');
-    outerDelete.classList.add('outDlt');
-        let dltButton = document.createElement('button');
-        dltButton.classList.add(`${id}`);
-        dltButton.textContent='-';
-        dltButton.addEventListener('click',()=>rmBook(dltButton));
-        outerDelete.appendChild(dltButton);
-    bookUnit.appendChild(outerDelete);
+        let outerDelete = document.createElement('div');
+        outerDelete.classList.add('outDlt');
+            let dltButton = document.createElement('button');
+            dltButton.classList.add(`${id}`);
+            dltButton.textContent='-';
+            dltButton.addEventListener('click',()=>rmBook(dltButton));
+            outerDelete.appendChild(dltButton);
+        bookUnit.appendChild(outerDelete);
 
-    let outerRead = document.createElement('div');
-    outerRead.classList.add('outRead');
-        let readButton = document.createElement('button');
-        readButton.classList.add(`${id}`);
-        readButton.textContent='Read';
-        bookIndex[bookIndex.length]=new Book(id);
-        readButton.addEventListener('click',()=>swapStatus(+readButton.classList[0]));
-        outerRead.appendChild(readButton);
-    bookUnit.appendChild(outerRead);
+        let outerRead = document.createElement('div');
+        outerRead.classList.add('outRead');
+            let readButton = document.createElement('button');
+            readButton.classList.add(`${id}`);
+            readButton.textContent='Read';
+            bookIndex[bookIndex.length]=new Book(id);
+            readButton.addEventListener('click',()=>swapStatus(+readButton.classList[0]));
+            outerRead.appendChild(readButton);
+        bookUnit.appendChild(outerRead);
 
-    bookHolder.appendChild(bookUnit);
+        bookHolder.appendChild(bookUnit);
 
-    //erase form values
-    slideOut.textContent=483;
-    pages.value=483;
+        //erase form values
+        slideOut.textContent=483;
+        pages.value=483;
 
-    testPages.textContent=`Pages: 483`;
+        testPages.textContent=`Pages: 483`;
 
-    testTitle.textContent="Great Expectations";
-    title.value="";
+        testTitle.textContent="Great Expectations";
+        title.value="";
 
-    testAuthor.textContent=`Written By: Charles Dickens`;
-    author.value="";
+        testAuthor.textContent=`Written By: Charles Dickens`;
+        author.value="";
 
-    testbookCover.style.background='black';
-    colSelect.value='black';
+        testbookCover.style.background='black';
+        colSelect.value='black';
+    }
 }
 
 function rmBook(element){
